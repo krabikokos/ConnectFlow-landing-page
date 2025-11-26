@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* --- 1. CSS Reset и Футуристические Переменные --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Цвета для темной футуристической темы */
+    --background-color: #02010A;     /* Самый темный фон */
+    --primary-color: #0D00A4;        /* Яркий синий/фиолетовый (Акцент) */
+    --secondary-accent: #22007C;     /* Вторичный акцент/Подсветка */
+    --secondary-bg-color: #04052E;   /* Фон шапки/карточек (Чуть светлее) */
+    --text-color: #90e0ef;           /* Светлый, неоновый текст (Используем твой цвет) */
+    --light-text-color: #ffffff;     /* Чисто белый для лучшего контраста */
+    --border-color: #140152;         /* Линии, разделители */
+    
+    /* Шрифт */
+    --main-font: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    font-family: var(--main-font);
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Общий контейнер */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--light-text-color); /* Заголовки делаем чисто белыми */
+}
+
+/* --- 2. Стили Header и Navigation --- */
+.main-header {
+    background-color: var(--secondary-bg-color);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color); /* Неоновый эффект */
+}
+
+.menu-toggle {
+    /* Базовые стили */
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    
+    /* ЭТО САМОЕ ГЛАВНОЕ: Скрываем на больших экранах */
+    display: none; 
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li a {
+    padding: 10px 15px;
+    display: block;
+    color: var(--text-color);
+}
+
+.nav-list li a:hover {
+    color: var(--primary-color); 
+    text-shadow: 0 0 5px var(--primary-color); /* Неоновый эффект при наведении */
+}
+
+/* --- 3. Стили Кнопок (CTA) --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: none;
+    /* Неоновая тень */
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px rgba(13, 0, 164, 0.4); 
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary-accent);
+    box-shadow: 0 0 15px var(--secondary-accent), 0 0 30px rgba(34, 0, 124, 0.6);
+    transform: translateY(-2px);
+}
+
+/* --- 4. Стили Секций (Hero & About) --- */
+.hero-section {
+    text-align: center;
+    padding: 100px 20px;
+    background: radial-gradient(circle at top, var(--secondary-bg-color) 0%, var(--background-color) 70%); 
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 7px var(--primary-color);
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-color);
+}
+
+.content-section {
+    padding: 80px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.content-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    text-shadow: 0 0 5px var(--secondary-accent);
+}
+
+.section-description {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+
+/* --- 5. Стили Секции Key Features (Карточки) --- */
+
+.features-grid {
+    display: grid;
+    /* 4 колонки, или меньше на узких экранах */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; 
+    padding-top: 20px;
+}
+
+.features-card { /* Исправлено: в HTML у тебя 'features-card', а не 'feature-card' */
+    background-color: var(--secondary-bg-color);
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.features-card:hover {
+    transform: translateY(-5px); 
+    border-color: var(--primary-color); 
+    box-shadow: 0 0 15px var(--primary-color); /* Неоновый эффект при наведении */
+}
+
+.features-card i {
+    font-size: 3rem;
+    color: var(--primary-color); 
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+.features-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--light-text-color);
+}
+
+/* --- 6. Стили Формы Контактов --- */
+
+.contact-form {
+    max-width: 500px;
+    margin: 40px auto 0;
+    padding: 30px;
+    background-color: var(--secondary-bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.contact-form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+
+/* --- 7. Стили Footer --- */
+.main-footer {
+    background-color: var(--secondary-bg-color);
+    border-top: 2px solid var(--border-color);
+    padding: 20px 0;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    margin-left: 20px;
+    color: var(--primary-color); 
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px var(--primary-color);
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--light-text-color);
+    transform: scale(1.1);
+}
+
+/* --- 8. Адаптивность (Media Queries) --- */
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    
+    .main-header .container {
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+    }
+    
+    .menu-toggle {
+        display: block; 
+        background: none;
+        border: none;
+        color: var(--primary-color); 
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+    }
+    
+    /* Скрываем навигацию по умолчанию и делаем ее вертикальной */
+    .main-nav {
+        max-height: 0;
+        overflow: hidden;
+        width: 100%; 
+        order: 4; 
+        padding: 0 0;
+        border-top: 1px solid var(--border-color);
+        background-color: var(--secondary-bg-color);
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    }
+
+    .main-nav.active {
+        max-height: 300px;
+        padding: 10px 0;
+    }
+
+    .nav-list {
+        flex-direction: column; 
+    }
+
+    .nav-list li a {
+        padding: 15px 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-list li:last-child a {
+        border-bottom: none;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem; 
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr; /* На мобильных - одна колонка */
+    }
+    
+    .main-footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-footer p {
+        margin-bottom: 15px;
+    }
+    
+    .social-links {
+        margin-top: 10px;
+    }
+}
